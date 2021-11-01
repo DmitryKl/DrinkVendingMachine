@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Drink>
+
+<table class="table" id="drinkTable">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Количество</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int row = 1; }
+        @foreach (var drink in Model)
+        {
+            <tr id="@drink.Id">
+                <td>@row</td>
+                <td><a href="javascript:LoadDrink(@drink.Id)">@drink.Title</a></td>
+                <td>@drink.Cost</td>
+                <td>@drink.Count</td>
+                <td><a href="javascript:DeleteDrink(@drink.Id)">Удалить</a></td>
+            </tr>
+            row++;
+        }
+    </tbody>
+</table>
+
+
+<button class="btn btn-primary" id="addDrinkButton" onclick="AddDrink()">Добавить</button>

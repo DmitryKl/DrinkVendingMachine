@@ -1,0 +1,7 @@
+﻿@model Dictionary<int, int>
+
+@foreach (var (value, count) in Model)
+{
+    <div class="text-end">@($"{count} по {value}")</div>
+}
+

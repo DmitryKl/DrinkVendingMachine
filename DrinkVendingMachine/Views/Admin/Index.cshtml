@@ -1,0 +1,41 @@
+﻿@model DrinkListViewModel
+
+<div class="container">
+
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-drink-tab" data-bs-toggle="tab" data-bs-target="#nav-drink" type="button" role="tab" aria-controls="nav-drink" aria-selected="true">Напитки</button>
+            <button class="nav-link" id="nav-coin-tab" data-bs-toggle="tab" data-bs-target="#nav-coin" type="button" role="tab" aria-controls="nav-coin" aria-selected="false">Монеты</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-drink" role="tabpanel" aria-labelledby="nav-drink-tab">
+            <div class="row">
+                <div class="col-md-6" id="drinkTablePanel">
+                    @Html.Partial("DrinkList", Model.Drinks)
+                </div>
+                <div class="col-md-6">
+                    <div class="container-fluid">
+
+                        <div class="row ">
+                            <div id="drinkItemPanel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-coin" role="tabpanel" aria-labelledby="nav-coin-tab">
+            <div class="row">
+                <div class="col-md-6" id="coinTablePanel">
+                    @Html.Partial("CoinList", Model.Coins)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var key = "@ViewBag.Key";
+</script>
+<script src="~/js/AdminScript.js"></script>

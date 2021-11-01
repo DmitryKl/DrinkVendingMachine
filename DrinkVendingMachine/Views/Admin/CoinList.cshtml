@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Coin>
+
+<table class="table" id="CoinTable">
+    <thead>
+        <tr>
+            <th>Номинал</th>
+            <th>Количество</th>
+            <th>Заблокирован</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var coin in Model)
+        {
+            <tr id="@coin.Id">
+                <td class="text-end" width="10%">@coin.Value</td>
+                <td class="text-end" width="10%">@coin.Count</td>
+                <td>
+                    <a href="javascript:ChangeBlockCoin(@coin.Id)">
+                        @if (coin.Blocked)
+                        {
+                            <span>Разблокировать</span>
+                        }
+                        else
+                        {
+                            <span>Заблокировать</span>
+                        }
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿@model Drink
+
+@if (TempData["Message"] != null)
+{
+    <div class="row">
+        <div class="alert alert-primary" id="Message">@TempData["Message"]</div>
+    </div>
+}
+<form asp-action="SaveDrink" method="post" id="drinkItemForm" enctype="multipart/form-data" onsubmit="return SaveDrink(this)">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Count"></label>
+        <input asp-for="Count" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Cost"></label>
+        <input asp-for="Cost" class="form-control" />
+    </div>
+    <input asp-for="ImagePath" hidden/>
+    <div class="form-group">
+        <label>Файл</label>
+        @if (Model.ImagePath != null)
+        {
+            <img src="@Url.Content(Model.ImagePath)" style="display: block" />
+        }
+        <input type="file" name="file" class="form-control" /><br>
+    </div>
+
+    <div class="text-center mt-2">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
